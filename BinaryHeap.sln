@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryHeap", "BinaryHeap\BinaryHeap.csproj", "{D73FB3E3-A7B1-4165-9FB5-A475610BAC29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryHeap.Tests", "BinaryHeap.Tests\BinaryHeap.Tests.csproj", "{8A0CF7C8-83BE-4246-9AF0-C5CF74BBB466}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D73FB3E3-A7B1-4165-9FB5-A475610BAC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73FB3E3-A7B1-4165-9FB5-A475610BAC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73FB3E3-A7B1-4165-9FB5-A475610BAC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73FB3E3-A7B1-4165-9FB5-A475610BAC29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A0CF7C8-83BE-4246-9AF0-C5CF74BBB466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A0CF7C8-83BE-4246-9AF0-C5CF74BBB466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A0CF7C8-83BE-4246-9AF0-C5CF74BBB466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A0CF7C8-83BE-4246-9AF0-C5CF74BBB466}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2225DF5B-E5BB-472C-B8D5-03C4C0E5BF4C}
+	EndGlobalSection
+EndGlobal
