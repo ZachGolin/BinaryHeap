@@ -25,10 +25,11 @@ namespace BinaryHeap.Tests
 
     public class BinaryHeapTests
     {
-        [Fact]
-        public void Test1()
-        {
+        //TODO: start testing!
+        //[Fact]
+        //public void Test1()
+        //{
 
-        }
+        //}
     }
 }

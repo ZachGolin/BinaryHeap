@@ -30,27 +30,37 @@
             return true;
         }
 
-        private bool HeapifyDown(int idx) //TODO: keep working on this
+        private bool HeapifyDown(int idx)
         {
-            int i = idx;
-            int L = GetLeftChildIndex(i);
-            int R = GetRightChildIndex(i);
-            bool rightExists = R < Values.Count - 1;
-            bool leftExists = rightExists || L < Values.Count - 1;
-            bool leftBeforeRight = Order.Compare(Values[L], Values[R]) < 0;
+            if (!(idx < Values.Count && idx >= 0)) { return false; }
 
-            if (leftBeforeRight && Order.Compare(Values[i], Values[L]) < 0)
+            int i = idx - 1; //something that's NOT the index we want to start at
+            int next = idx;
+            int l;
+            int r;
+            while (i != next)
             {
+                i = next;
+                l = GetLeftChildIndex(i);
+                r = GetRightChildIndex(i);
+
+                if (l >= Values.Count) { break; } //no children to swap with
+
+                if (Order.Compare(Values[l], Values[r]) < 0 && Order.Compare(Values[i], Values[l]) < 0)
+                { 
+                    next = l;
+                }
+                else if (Order.Compare(Values[r], Values[l]) < 0 && Order.Compare(Values[i], Values[r]) < 0)
+                {
+                    next = r;
+                }
+
                 T? temp = Values[i];
-                Values[i] = Values[L];
-                Values[L] = temp;
+                Values[i] = Values[next];
+                Values[next] = temp;
             }
-            else if (!leftBeforeRight && Order.Compare(Values[i], Values[R]) > 0)
-            {
-                T? temp = Values[i];
-                Values[i] = Values[L];
-                Values[L] = temp;
-            }
+
+            return true;
         }
 
         public int GetParentIndex(int nodeIndex)
@@ -71,7 +81,16 @@
         public void Insert(T? value)
         {
             Values.Add(value);
-            HeapifyUp();
+            HeapifyUp(Values.Count - 1);
+        }
+
+        public T? Pop()
+        { 
+            T? result = Values[0];
+            Values[0] = Values[Values.Count - 1];
+            Values.RemoveAt(Values.Count - 1);
+            HeapifyDown(0);
+            return result;
         }
     }
 }
