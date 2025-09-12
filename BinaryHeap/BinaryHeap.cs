@@ -3,8 +3,8 @@
     public class BinaryHeap<T>
     {
         public List<T?> Values { get; private set; }
-        public Comparer<T?> Order { get; private set; }
-        public BinaryHeap(Comparer<T?> O)
+        public Comparison<T?> Order { get; private set; }
+        public BinaryHeap(Comparison<T?> O)
         { 
             Values = [];
             Order = O;
@@ -19,7 +19,7 @@
             while (i == p)
             {
                 p = GetParentIndex(i);
-                if (Order.Compare(Values[i], Values[p]) < 0) //min-heap with respect to ordering on T
+                if (Order(Values[i], Values[p]) < 0) //min-heap with respect to ordering on T
                 {
                     T? temp = Values[i];
                     Values[i] = Values[p];
@@ -43,14 +43,15 @@
                 i = next;
                 l = GetLeftChildIndex(i);
                 r = GetRightChildIndex(i);
+                bool rightExists = r < Values.Count;
 
                 if (l >= Values.Count) { break; } //no children to swap with
 
-                if (Order.Compare(Values[l], Values[r]) < 0 && Order.Compare(Values[i], Values[l]) < 0)
-                { 
+                if ((!rightExists || Order(Values[l], Values[r]) <= 0) && Order(Values[i], Values[l]) > 0)
+                {
                     next = l;
                 }
-                else if (Order.Compare(Values[r], Values[l]) < 0 && Order.Compare(Values[i], Values[r]) < 0)
+                else if (rightExists && Order(Values[i], Values[r]) > 0)
                 {
                     next = r;
                 }
@@ -65,7 +66,8 @@
 
         public int GetParentIndex(int nodeIndex)
         {
-            return (nodeIndex + (nodeIndex & 1) - 1) / 2;
+            //return (nodeIndex + (nodeIndex & 1) - 1) / 2;
+            return (nodeIndex - 1) / 2;
         }
 
         public int GetLeftChildIndex(int nodeIndex)
