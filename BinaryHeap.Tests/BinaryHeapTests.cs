@@ -62,5 +62,18 @@ namespace BinaryHeap.Tests
                 $"Sequences {ListToCommaSeparatedString(sortedInputs)} and " +
                 $"{ListToCommaSeparatedString(heapSortedValues)} are not equal");
         }
+
+        [Theory]
+        [InlineData((int[])[1, 3, 7, 34, 4, 6, 7, 32, 6, 7, 5, 9, 7, 86, 3, 7, 1000000])]
+        [InlineData((int[])[1, 33, 9, 7, 3, 11, 77])]
+        public void HeapSort_Works(int[] values)
+        {
+            List<int> sortedCopy = [.. values];
+            sortedCopy.Sort(IntOrder);
+            HeapSort.Sort(values);
+            Assert.True(sortedCopy.SequenceEqual(values),
+                $"Sequences {ListToCommaSeparatedString(sortedCopy)} and " +
+                $"{ListToCommaSeparatedString(values)} are not equal");
+        }
     }
 }
